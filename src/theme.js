@@ -8,8 +8,7 @@ export const colors = {
 }
 
 export const breakpoints = {
-  sm: '600px',
-  lg: '1200px',
+  lg: '1080px',
 }
 
 export const gutter = {

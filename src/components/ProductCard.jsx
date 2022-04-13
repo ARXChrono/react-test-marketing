@@ -8,7 +8,8 @@ const StyledTabs = styled(Tabs)`
     &__tab-list {
       display: flex;
       list-style-type: none;
-      padding-left: 0;
+      padding: 0 ${({ theme }) => theme.gutter.lg};
+      border-bottom: 1px solid ${({ theme }) => theme.colors.background};
     }
     &__tab {
       text-transform: uppercase;
@@ -19,6 +20,10 @@ const StyledTabs = styled(Tabs)`
       color: ${({ theme }) => theme.colors.gray};
       border-bottom: 0.2rem solid transparent;
       transition: color 0.25s ease;
+      &:hover,
+      &:focus {
+        color: ${({ theme }) => theme.colors.dark};
+      }
       &--selected {
         color: ${({ theme }) => theme.colors.dark};
         border-bottom: 0.2rem solid ${({ theme }) => theme.colors.interact};
@@ -58,6 +63,9 @@ const ProductCard = styled.article`
   min-height: 900px;
   box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px;
   display: flex;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-wrap: wrap;
+  }
 `
 
 const BackButton = styled.a`
@@ -84,14 +92,25 @@ const BackButton = styled.a`
 
 const Details = styled.div`
   flex: 1 1 60%;
-  padding: 2rem 4rem 0;
-  border-right: 1px solid ${({ theme }) => theme.colors.gray};
+  padding: 2rem 0;
+  border-right: 1px solid ${({ theme }) => theme.colors.background};
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 1rem;
+    flex: 1 1 100%;
+  }
 `
 
 const Image = styled.div`
   flex: 1 1 40%;
-  padding: 1rem 4rem;
-  background: pink;
+  padding: 2rem 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 1rem;
+    flex: 1 1 100%;
+  }
+`
+
+const Wrapper = styled.div`
+  padding: 0 ${({ theme }) => theme.gutter.lg};
 `
 
 const ProductCardComponent = ({ product }) => {
@@ -99,21 +118,25 @@ const ProductCardComponent = ({ product }) => {
   return (
     <ProductCard>
       <Details>
-        <BackButton>
-          <MdKeyboardBackspace />
-          All Products
-        </BackButton>
-        <Title>{product.title}</Title>
-        <Subtitle>{product.subtitle}</Subtitle>
+        <Wrapper>
+          <BackButton>
+            <MdKeyboardBackspace />
+            All Products
+          </BackButton>
+          <Title>{product.title}</Title>
+          <Subtitle>{product.subtitle}</Subtitle>
+        </Wrapper>
         <StyledTabs>
           <TabList>
             {product.tabs.map((tab) => (
               <Tab>{tab.label}</Tab>
             ))}
           </TabList>
-          {product.tabs.map((tab) => (
-            <TabPanel>{tab.content}</TabPanel>
-          ))}
+          <Wrapper>
+            {product.tabs.map((tab) => (
+              <TabPanel>{tab.content}</TabPanel>
+            ))}
+          </Wrapper>
         </StyledTabs>
       </Details>
       <Image></Image>

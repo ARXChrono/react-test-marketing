@@ -44,6 +44,7 @@ const GlobalCSS = createGlobalStyle`
   body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: ${({ theme }) => theme.colors.background};
+    margin: 0;
   }
   
 `
