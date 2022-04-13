@@ -1,8 +1,28 @@
 import * as React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { AppWrapper, Title404 } from '../styles'
+import styled, { ThemeProvider } from 'styled-components'
 import theme from '../theme'
 import Header from '../components/Header'
+
+const Title404 = styled.h1`
+  color: ${({ theme }) => theme.colors.dark};
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 4px;
+  background: white;
+`
+
+const AppWrapper = styled.main`
+  margin: 0 auto;
+  max-width: 1400px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-direction: column;
+  }
+`
 
 const NotFoundPage = () => {
   return (
