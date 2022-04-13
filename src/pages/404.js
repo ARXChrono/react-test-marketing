@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { AppWrapper, Heading } from './styles'
+import { AppWrapper, Heading } from '../styles'
 import Helmet from 'react-helmet'
 import theme from '../theme'
 
