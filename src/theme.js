@@ -1,7 +1,8 @@
 export const colors = {
   primary: '#eee',
   interact: '#3f87f5',
-  dark: '#4c4c4c',
+  dark: '#4a4a4a',
+  darkerGray: '#4f4f4f',
   gray: '#cccccc',
   background: '#ededed',
 }

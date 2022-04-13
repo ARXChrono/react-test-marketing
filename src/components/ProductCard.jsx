@@ -12,6 +12,26 @@ const StyledTabs = styled(Tabs)`
     }
     &__tab {
       text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 1rem;
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.gray};
+      border-bottom: 0.2rem solid transparent;
+      transition: color 0.25s ease;
+      &--selected {
+        color: ${({ theme }) => theme.colors.dark};
+        border-bottom: 0.2rem solid ${({ theme }) => theme.colors.interact};
+      }
+    }
+    &__tab-panel--selected {
+      max-width: 750px;
+      padding: 2rem 0;
+      font-size: 0.8rem;
+      font-weight: 200;
+      letter-spacing: 0.4px;
+      line-height: 1.7;
+      color: ${({ theme }) => theme.colors.darkerGray};
     }
   }
 `
@@ -19,14 +39,14 @@ const StyledTabs = styled(Tabs)`
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.dark};
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 `
 
 const Subtitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 3.5rem;
 `
 
@@ -43,7 +63,7 @@ const ProductCard = styled.article`
 const BackButton = styled.a`
   display: flex;
   font-size: 0.9rem;
-  font-weight: 400;
+  font-weight: 300;
   color: ${({ theme }) => theme.colors.dark};
   align-items: center;
   margin: 3rem 0;
