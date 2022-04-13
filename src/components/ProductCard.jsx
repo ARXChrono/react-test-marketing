@@ -8,8 +8,11 @@ const StyledTabs = styled(Tabs)`
     &__tab-list {
       display: flex;
       list-style-type: none;
-      padding: 0 ${({ theme }) => theme.gutter.lg};
       border-bottom: 1px solid ${({ theme }) => theme.colors.background};
+      padding: 0 ${({ theme }) => theme.gutter.lg};
+      @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+        padding: 0 2rem;
+      }
     }
     &__tab {
       text-transform: uppercase;
@@ -46,6 +49,9 @@ const Title = styled.h1`
   font-size: 2.25rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: 1.8rem;
+  }
 `
 
 const Subtitle = styled.h2`
@@ -53,6 +59,10 @@ const Subtitle = styled.h2`
   font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 3.5rem;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
 `
 
 const ProductCard = styled.article`
@@ -65,6 +75,7 @@ const ProductCard = styled.article`
   display: flex;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     flex-wrap: wrap;
+    height: 100vh;
   }
 `
 
@@ -88,14 +99,16 @@ const BackButton = styled.a`
     }
     filter: brightness(1.1);
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin: 1.5rem 0;
+  }
 `
 
 const Details = styled.div`
   flex: 1 1 60%;
-  padding: 2rem 0;
   border-right: 1px solid ${({ theme }) => theme.colors.background};
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: 1rem;
     flex: 1 1 100%;
   }
 `
@@ -111,6 +124,9 @@ const Image = styled.div`
 
 const Wrapper = styled.div`
   padding: 0 ${({ theme }) => theme.gutter.lg};
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: 0 2rem;
+  }
 `
 
 const ProductCardComponent = ({ product }) => {
