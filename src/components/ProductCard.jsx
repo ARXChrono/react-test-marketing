@@ -1,21 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
 import { MdKeyboardBackspace } from 'react-icons/md'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 
-export const Title = styled.h1`
+const StyledTabs = styled(Tabs)`
+  .react-tabs {
+    &__tab-list {
+      display: flex;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    &__tab {
+      text-transform: uppercase;
+    }
+  }
+`
+
+const Title = styled.h1`
   color: ${({ theme }) => theme.colors.dark};
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 `
 
-export const Subtitle = styled.h2`
+const Subtitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.9rem;
   font-weight: 500;
+  margin-bottom: 3.5rem;
 `
 
-export const ProductCard = styled.article`
+const ProductCard = styled.article`
   background: white;
   border-radius: 4px;
   width: 100%;
@@ -25,7 +40,7 @@ export const ProductCard = styled.article`
   display: flex;
 `
 
-export const BackButton = styled.a`
+const BackButton = styled.a`
   display: flex;
   font-size: 0.9rem;
   font-weight: 400;
@@ -47,32 +62,43 @@ export const BackButton = styled.a`
   }
 `
 
-export const Details = styled.div`
-  flex-grow: 1;
-  padding: 2rem 4rem;
-
+const Details = styled.div`
+  flex: 1 1 60%;
+  padding: 2rem 4rem 0;
   border-right: 1px solid ${({ theme }) => theme.colors.gray};
 `
 
-export const Image = styled.div`
-  width: 30%;
-  flex-grow: 1;
+const Image = styled.div`
+  flex: 1 1 40%;
   padding: 1rem 4rem;
   background: pink;
 `
 
-const ProductCardComponent = ({ product }) => (
-  <ProductCard>
-    <Details>
-      <BackButton>
-        <MdKeyboardBackspace />
-        All Products
-      </BackButton>
-      <Title>{product.title}</Title>
-      <Subtitle>{product.subtitle}</Subtitle>
-    </Details>
-    <Image></Image>
-  </ProductCard>
-)
+const ProductCardComponent = ({ product }) => {
+  console.log(product)
+  return (
+    <ProductCard>
+      <Details>
+        <BackButton>
+          <MdKeyboardBackspace />
+          All Products
+        </BackButton>
+        <Title>{product.title}</Title>
+        <Subtitle>{product.subtitle}</Subtitle>
+        <StyledTabs>
+          <TabList>
+            {product.tabs.map((tab) => (
+              <Tab>{tab.label}</Tab>
+            ))}
+          </TabList>
+          {product.tabs.map((tab) => (
+            <TabPanel>{tab.content}</TabPanel>
+          ))}
+        </StyledTabs>
+      </Details>
+      <Image></Image>
+    </ProductCard>
+  )
+}
 
 export default ProductCardComponent

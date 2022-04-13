@@ -11,9 +11,14 @@ export const breakpoints = {
   lg: '1200px',
 }
 
+export const gutter = {
+  lg: '4rem',
+}
+
 export const theme = {
   colors: colors,
   breakpoints: breakpoints,
+  gutter: gutter,
 }
 
 export default theme
