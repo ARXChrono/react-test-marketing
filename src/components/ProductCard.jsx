@@ -19,7 +19,9 @@ export const ProductCard = styled.article`
   background: white;
   border-radius: 4px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
+  min-height: 900px;
+  box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px;
   display: flex;
 `
 
@@ -46,7 +48,6 @@ export const BackButton = styled.a`
 `
 
 export const Details = styled.div`
-  height: 100%;
   flex-grow: 1;
   padding: 2rem 4rem;
 
@@ -54,7 +55,6 @@ export const Details = styled.div`
 `
 
 export const Image = styled.div`
-  height: 100%;
   width: 30%;
   flex-grow: 1;
   padding: 1rem 4rem;

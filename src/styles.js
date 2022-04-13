@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const AppWrapper = styled.main`
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1400px;
   height: 100vh;
   display: flex;
   align-items: center;
