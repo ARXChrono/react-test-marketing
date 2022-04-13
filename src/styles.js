@@ -1,9 +1,5 @@
 import styled from 'styled-components'
 
-export const Heading = styled.h1`
-  color: ${({ theme }) => theme.colors.dark};
-`
-
 export const AppWrapper = styled.main`
   margin: 0 auto;
   max-width: 1100px;
@@ -12,10 +8,12 @@ export const AppWrapper = styled.main`
   align-items: center;
 `
 
-export const ProductCard = styled.article`
-  background: white;
+export const Title404 = styled.h1`
+  color: ${({ theme }) => theme.colors.dark};
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 0 auto;
   padding: 1rem;
   border-radius: 4px;
-  width: 100%;
-  max-width: 960px;
+  background: white;
 `
