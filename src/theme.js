@@ -1,6 +1,7 @@
 export const colors = {
   primary: '#eee',
   interact: '#3f87f5',
+  interactHover: '#5095ff',
   dark: '#4a4a4a',
   darkerGray: '#4f4f4f',
   gray: '#cccccc',

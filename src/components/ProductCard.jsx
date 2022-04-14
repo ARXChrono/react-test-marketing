@@ -1,9 +1,30 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Select from 'react-select'
 import { StaticImage } from 'gatsby-plugin-image'
 import { MdKeyboardBackspace } from 'react-icons/md'
+import toast from 'react-hot-toast'
+
+const rotate = keyframes`
+  0% { transform: rotate(90deg) }
+  100% { transform: rotate(449deg) }
+`
+
+const Spinner = styled.span`
+  margin-left: 0.5rem;
+  display: flex;
+  animation: ${rotate} 1.3s infinite cubic-bezier(0.63, 0.09, 0.32, 0.9);
+  border-radius: 50%;
+  position: relative;
+  will-change: transform;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-top: 0.25rem solid rgba(255, 255, 255, 1);
+  border-right: 0.25rem solid rgba(255, 255, 255, 1);
+  border-bottom: 0.25rem solid rgba(255, 255, 255, 1);
+  border-left: 0.25rem solid rgba(255, 255, 255, 0.5);
+`
 
 const StyledTabs = styled(Tabs)`
   .react-tabs {
@@ -90,7 +111,7 @@ const ProductCard = styled.article`
 
 const BackButton = styled.a`
   display: flex;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 300;
   color: ${({ theme }) => theme.colors.dark};
   align-items: center;
@@ -157,6 +178,7 @@ const Image = styled.div`
   flex: 1 1 45%;
   padding: 2.5rem 0;
   align-items: center;
+  user-select: none;
   .gatsby-image-wrapper {
     height: 100%;
     max-width: 100%;
@@ -202,20 +224,42 @@ const AddToCart = styled.a`
   padding: 1.5rem 6rem;
   font-weight: 500;
   border-radius: 4px;
+  text-transform: uppercase;
   background: ${({ theme }) => theme.colors.interact};
   cursor: pointer;
+  transition: background 0.2s ease;
+  min-width: 300px;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
     width: 100%;
     justify-content: center;
   }
+  &:hover,
+  &:active {
+    background: ${({ theme }) => theme.colors.interactHover};
+  }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      pointer-events: none;
+      user-select: none;
+    `}
 `
 
 const ProductCardComponent = ({ product }) => {
   const { title, subtitle, tabs = [], price, colors } = product
   const [activeColor, setActiveColor] = useState('black')
+  const [isloading, setisLoading] = useState(false)
   const handleChange = (e) => {
     setActiveColor(e.value)
+  }
+  const handleCartClick = () => {
+    setisLoading(true)
+    setTimeout(() => {
+      setisLoading(false)
+      toast.success('Added to cart!')
+    }, 2000)
   }
 
   return (
@@ -224,7 +268,7 @@ const ProductCardComponent = ({ product }) => {
         <Container>
           <BackButton>
             <MdKeyboardBackspace />
-            All Products
+            All products
           </BackButton>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
@@ -281,7 +325,15 @@ const ProductCardComponent = ({ product }) => {
         </ImageMobile>
         <BuyWrapper>
           <Container>
-            <AddToCart>Add To Cart</AddToCart>
+            <AddToCart onClick={handleCartClick} disabled={isloading}>
+              {isloading ? (
+                <>
+                  {'Loading'} <Spinner />
+                </>
+              ) : (
+                'Add to cart'
+              )}
+            </AddToCart>
           </Container>
         </BuyWrapper>
       </Details>

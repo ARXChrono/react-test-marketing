@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import theme from '../theme'
 import product from '../data'
 import ProductCard from '../components/ProductCard'
+import { Toaster } from 'react-hot-toast'
 
 const AppWrapper = styled.main`
   margin: 0 auto;
@@ -21,6 +22,7 @@ const IndexPage = () => {
   return (
     <ThemeProvider theme={theme}>
       <Header title={product.title} />
+      <Toaster position="top-center" reverseOrder={false} />
       <AppWrapper>
         <ProductCard product={product} />
       </AppWrapper>
