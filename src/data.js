@@ -1,7 +1,6 @@
 export const product = {
   title: 'Audio-Technica ATH-MSR7',
   subtitle: '2017 Best Headphones of the Year Award Winner',
-  id: 1,
   price: {
     regular: 89.99,
     sale: 59.99,
