@@ -1,17 +1,19 @@
 # 🌎 Berlitz React Marketing Test [![Netlify Status](https://api.netlify.com/api/v1/badges/f9660d28-e4cf-4f35-90e8-1fa4db3a8688/deploy-status)](https://app.netlify.com/sites/shaun-react-test-marketing/deploys)
 
-Berlitz's React Test, to test the difficulty and speed it takes to complete.
+Berlitz's React [Test](https://github.com/ARXChrono/react-test-marketing/tree/master/mockup), to test the difficulty and speed it takes to complete.
 
 👉 [View demo link](https://shaun-react-test-marketing.netlify.app) ✨
 
 ### List of the tech used below:
 
 - React
-- Gatsby
 - Styled Components
+- Gatsby
+- Gatsby Image
 - React Icons
 - React Tabs
 - React Select
+- React Hot Toast
 
 ## 🚀 Local Development Server
 
