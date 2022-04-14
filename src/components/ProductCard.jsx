@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import Select from 'react-select'
 
 const StyledTabs = styled(Tabs)`
   .react-tabs {
@@ -18,7 +19,7 @@ const StyledTabs = styled(Tabs)`
       text-transform: uppercase;
       font-size: 0.8rem;
       font-weight: 500;
-      padding: 1rem;
+      padding: 0.75rem 1.25rem;
       cursor: pointer;
       color: ${({ theme }) => theme.colors.gray};
       border-bottom: 0.2rem solid transparent;
@@ -44,6 +45,16 @@ const StyledTabs = styled(Tabs)`
   }
 `
 
+const StyledSelect = styled(Select)`
+  margin-top: 3rem;
+  max-width: 180px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  span[class$='indicatorSeparator'] {
+    display: none;
+  }
+`
+
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.dark};
   font-size: 2.25rem;
@@ -55,9 +66,9 @@ const Title = styled.h1`
 
 const Subtitle = styled.h2`
   color: ${({ theme }) => theme.colors.gray};
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin-bottom: 3.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     font-size: 0.8rem;
     margin-bottom: 1.5rem;
@@ -105,7 +116,7 @@ const BackButton = styled.a`
 `
 
 const Details = styled.div`
-  flex: 1 1 60%;
+  flex: 1 1 55%;
   border-right: 1px solid ${({ theme }) => theme.colors.background};
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     flex: 1 1 100%;
@@ -134,7 +145,7 @@ const PricingSale = styled.span`
 `
 
 const Image = styled.div`
-  flex: 1 1 40%;
+  flex: 1 1 45%;
   padding: 2rem 0;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 1rem;
@@ -150,7 +161,11 @@ const Wrapper = styled.div`
 `
 
 const ProductCardComponent = ({ product }) => {
-  const { title, subtitle, tabs = [], price } = product
+  const { title, subtitle, tabs = [], price, colors } = product
+  const [activeColor, setActiveColor] = useState('black')
+  const handleChange = () => {
+    setActiveColor()
+  }
   return (
     <ProductCard>
       <Details>
@@ -177,6 +192,13 @@ const ProductCardComponent = ({ product }) => {
         <Wrapper>
           <Pricing>${price.sale}</Pricing>
           <PricingSale>${price.regular}</PricingSale>
+          <StyledSelect
+            options={colors}
+            noOptionsMessage={'No options available'}
+            autoFocus={true}
+            isSearchable={false}
+            onChange={handleChange}
+          />
         </Wrapper>
       </Details>
       <Image></Image>

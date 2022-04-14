@@ -12,7 +12,7 @@ export const breakpoints = {
 }
 
 export const gutter = {
-  lg: '4rem',
+  lg: '5rem',
 }
 
 export const theme = {
