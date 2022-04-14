@@ -13,6 +13,7 @@ const AppWrapper = styled.main`
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     flex-direction: column;
+    height: 100%;
   }
 `
 

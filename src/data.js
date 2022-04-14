@@ -8,12 +8,10 @@ export const product = {
   },
   colors: [
     {
-      image: '/images/black.jpg',
       value: 'black',
       label: 'Black',
     },
     {
-      image: '/images/brown.jpg',
       value: 'brown',
       label: 'Brown',
     },

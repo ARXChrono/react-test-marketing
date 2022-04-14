@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { MdKeyboardBackspace } from 'react-icons/md'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Select from 'react-select'
+import { StaticImage } from 'gatsby-plugin-image'
+import { MdKeyboardBackspace } from 'react-icons/md'
 
 const StyledTabs = styled(Tabs)`
   .react-tabs {
@@ -35,6 +36,7 @@ const StyledTabs = styled(Tabs)`
     }
     &__tab-panel--selected {
       max-width: 750px;
+      min-height: 200px;
       padding: 2rem 0;
       font-size: 0.8rem;
       font-weight: 200;
@@ -46,7 +48,7 @@ const StyledTabs = styled(Tabs)`
 `
 
 const StyledSelect = styled(Select)`
-  max-width: 180px;
+  max-width: 160px;
   font-size: 0.85rem;
   font-weight: 300;
   text-transform: capitalize;
@@ -81,8 +83,8 @@ const ProductCard = styled.article`
   box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px;
   display: flex;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    flex-wrap: wrap;
-    height: 100vh;
+    flex-direction: column;
+    height: 100%;
   }
 `
 
@@ -141,12 +143,27 @@ const PricingSale = styled.span`
   }
 `
 
+const ImageMobile = styled.div`
+  display: flex;
+  max-height: 256px;
+  justify-content: center;
+  margin-bottom: 1rem;
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: none;
+  }
+`
+
 const Image = styled.div`
   flex: 1 1 45%;
-  padding: 2rem 0;
+  padding: 2.5rem 0;
+  align-items: center;
+  .gatsby-image-wrapper {
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: 1rem;
-    flex: 1 1 100%;
+    display: none;
   }
 `
 
@@ -164,6 +181,9 @@ const ColorsHeading = styled.h4`
   color: ${({ theme }) => theme.colors.darkerGray};
   text-transform: uppercase;
   padding-bottom: 0.5rem;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-top: 1.5rem;
+  }
 `
 
 const BuyWrapper = styled.div`
@@ -171,6 +191,9 @@ const BuyWrapper = styled.div`
   padding: 3rem 0;
   width: 100%;
   border-top: 1px solid ${({ theme }) => theme.colors.background};
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    margin-top: 1.5rem;
+  }
 `
 
 const AddToCart = styled.a`
@@ -180,6 +203,12 @@ const AddToCart = styled.a`
   font-weight: 500;
   border-radius: 4px;
   background: ${({ theme }) => theme.colors.interact};
+  cursor: pointer;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
 `
 
 const ProductCardComponent = ({ product }) => {
@@ -199,6 +228,29 @@ const ProductCardComponent = ({ product }) => {
           </BackButton>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
+          <ImageMobile>
+            {activeColor === 'black' ? (
+              <StaticImage
+                src={'../images/black.jpg'}
+                alt={title}
+                height={256}
+                breakpoints={[750, 1080, 1366, 1920]}
+                placeholder="blurred"
+                layout="constrained"
+                cropFocus="attention"
+              />
+            ) : (
+              <StaticImage
+                src={'../images/brown.jpg'}
+                alt={title}
+                height={256}
+                breakpoints={[750, 1080, 1366, 1920]}
+                placeholder="blurred"
+                layout="constrained"
+                cropFocus="attention"
+              />
+            )}
+          </ImageMobile>
         </Container>
         <StyledTabs>
           <TabList>
@@ -219,7 +271,6 @@ const ProductCardComponent = ({ product }) => {
           <StyledSelect
             options={colors}
             noOptionsMessage={'No options available'}
-            autoFocus={true}
             isSearchable={false}
             placeholder={activeColor}
             components={{
@@ -234,7 +285,27 @@ const ProductCardComponent = ({ product }) => {
           </Container>
         </BuyWrapper>
       </Details>
-      <Image></Image>
+      <Image>
+        {activeColor === 'black' ? (
+          <StaticImage
+            src={'../images/black.jpg'}
+            alt={title}
+            breakpoints={[750, 1080, 1366, 1920]}
+            placeholder="blurred"
+            layout="constrained"
+            cropFocus="attention"
+          />
+        ) : (
+          <StaticImage
+            src={'../images/brown.jpg'}
+            alt={title}
+            breakpoints={[750, 1080, 1366, 1920]}
+            placeholder="blurred"
+            layout="constrained"
+            cropFocus="attention"
+          />
+        )}
+      </Image>
     </ProductCard>
   )
 }
