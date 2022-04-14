@@ -9,7 +9,7 @@ export const colors = {
 }
 
 export const breakpoints = {
-  lg: '1080px',
+  lg: '1200px',
 }
 
 export const gutter = {

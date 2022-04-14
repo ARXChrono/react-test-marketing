@@ -64,6 +64,9 @@ const StyledTabs = styled(Tabs)`
       letter-spacing: 0.4px;
       line-height: 1.7;
       color: ${({ theme }) => theme.colors.darkerGray};
+      @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+        min-height: unset;
+      }
     }
   }
 `
@@ -80,7 +83,7 @@ const Title = styled.h1`
   font-size: 2.25rem;
   font-weight: 500;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 `
 
@@ -90,7 +93,7 @@ const Subtitle = styled.h2`
   font-weight: 500;
   margin-bottom: 2.5rem;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     margin-bottom: 1.5rem;
   }
 `
@@ -105,7 +108,7 @@ const ProductCard = styled.article`
   display: flex;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     flex-direction: column;
-    height: 100%;
+    box-shadow: unset;
   }
 `
 
