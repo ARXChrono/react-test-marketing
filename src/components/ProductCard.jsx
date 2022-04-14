@@ -147,7 +147,7 @@ const ImageMobile = styled.div`
   display: flex;
   max-height: 256px;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
@@ -228,29 +228,6 @@ const ProductCardComponent = ({ product }) => {
           </BackButton>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
-          <ImageMobile>
-            {activeColor === 'black' ? (
-              <StaticImage
-                src={'../images/black.jpg'}
-                alt={title}
-                height={256}
-                breakpoints={[750, 1080, 1366, 1920]}
-                placeholder="blurred"
-                layout="constrained"
-                cropFocus="attention"
-              />
-            ) : (
-              <StaticImage
-                src={'../images/brown.jpg'}
-                alt={title}
-                height={256}
-                breakpoints={[750, 1080, 1366, 1920]}
-                placeholder="blurred"
-                layout="constrained"
-                cropFocus="attention"
-              />
-            )}
-          </ImageMobile>
         </Container>
         <StyledTabs>
           <TabList>
@@ -279,6 +256,29 @@ const ProductCardComponent = ({ product }) => {
             onChange={handleChange}
           />
         </Container>
+        <ImageMobile>
+          {activeColor === 'black' ? (
+            <StaticImage
+              src={'../images/black.jpg'}
+              alt={title}
+              height={256}
+              breakpoints={[750, 1080, 1366, 1920]}
+              placeholder="blurred"
+              layout="constrained"
+              cropFocus="attention"
+            />
+          ) : (
+            <StaticImage
+              src={'../images/brown.jpg'}
+              alt={title}
+              height={256}
+              breakpoints={[750, 1080, 1366, 1920]}
+              placeholder="blurred"
+              layout="constrained"
+              cropFocus="attention"
+            />
+          )}
+        </ImageMobile>
         <BuyWrapper>
           <Container>
             <AddToCart>Add To Cart</AddToCart>
