@@ -46,13 +46,10 @@ const StyledTabs = styled(Tabs)`
 `
 
 const StyledSelect = styled(Select)`
-  margin-top: 3rem;
   max-width: 180px;
   font-size: 0.85rem;
   font-weight: 300;
-  span[class$='indicatorSeparator'] {
-    display: none;
-  }
+  text-transform: capitalize;
 `
 
 const Title = styled.h1`
@@ -80,7 +77,7 @@ const ProductCard = styled.article`
   border-radius: 4px;
   width: 100%;
   max-width: 1400px;
-  min-height: 900px;
+  min-height: 700px;
   box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px;
   display: flex;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
@@ -153,53 +150,89 @@ const Image = styled.div`
   }
 `
 
-const Wrapper = styled.div`
+const Container = styled.div`
   padding: 0 ${({ theme }) => theme.gutter.lg};
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 0 2rem;
   }
 `
 
+const ColorsHeading = styled.h4`
+  margin-top: 3rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.darkerGray};
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+`
+
+const BuyWrapper = styled.div`
+  margin-top: 3rem;
+  padding: 3rem 0;
+  width: 100%;
+  border-top: 1px solid ${({ theme }) => theme.colors.background};
+`
+
+const AddToCart = styled.a`
+  display: inline-flex;
+  color: white;
+  padding: 1.5rem 6rem;
+  font-weight: 500;
+  border-radius: 4px;
+  background: ${({ theme }) => theme.colors.interact};
+`
+
 const ProductCardComponent = ({ product }) => {
   const { title, subtitle, tabs = [], price, colors } = product
   const [activeColor, setActiveColor] = useState('black')
-  const handleChange = () => {
-    setActiveColor()
+  const handleChange = (e) => {
+    setActiveColor(e.value)
   }
+
   return (
     <ProductCard>
       <Details>
-        <Wrapper>
+        <Container>
           <BackButton>
             <MdKeyboardBackspace />
             All Products
           </BackButton>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
-        </Wrapper>
+        </Container>
         <StyledTabs>
           <TabList>
             {tabs.map((tab) => (
               <Tab>{tab.label}</Tab>
             ))}
           </TabList>
-          <Wrapper>
+          <Container>
             {tabs.map((tab) => (
               <TabPanel>{tab.content}</TabPanel>
             ))}
-          </Wrapper>
+          </Container>
         </StyledTabs>
-        <Wrapper>
+        <Container>
           <Pricing>${price.sale}</Pricing>
           <PricingSale>${price.regular}</PricingSale>
+          <ColorsHeading>Colors</ColorsHeading>
           <StyledSelect
             options={colors}
             noOptionsMessage={'No options available'}
             autoFocus={true}
             isSearchable={false}
+            placeholder={activeColor}
+            components={{
+              IndicatorSeparator: () => null,
+            }}
             onChange={handleChange}
           />
-        </Wrapper>
+        </Container>
+        <BuyWrapper>
+          <Container>
+            <AddToCart>Add To Cart</AddToCart>
+          </Container>
+        </BuyWrapper>
       </Details>
       <Image></Image>
     </ProductCard>
