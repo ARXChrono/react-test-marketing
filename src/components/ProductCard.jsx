@@ -258,7 +258,7 @@ const ProductCardComponent = ({ product }) => {
     setisLoading(true)
     setTimeout(() => {
       setisLoading(false)
-      toast.success('Added to cart!')
+      toast.success('Item added to cart!')
     }, 2000)
   }
 
