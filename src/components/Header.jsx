@@ -41,12 +41,15 @@ const ResetCSS = createGlobalStyle`
 `
 
 const GlobalCSS = createGlobalStyle`
+  ::selection {
+    background-color: ${({ theme }) => theme.colors.dark};
+    color: white;
+  }
   body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: ${({ theme }) => theme.colors.background};
-    margin: 0;
+    margin: 0; 
   }
-  
 `
 
 const Header = ({ title = '' }) => {
@@ -58,7 +61,7 @@ const Header = ({ title = '' }) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </Helmet>

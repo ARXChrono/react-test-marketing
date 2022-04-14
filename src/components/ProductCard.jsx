@@ -48,7 +48,6 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.colors.dark};
   font-size: 2.25rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     font-size: 1.8rem;
   }
@@ -113,6 +112,27 @@ const Details = styled.div`
   }
 `
 
+const Pricing = styled.span`
+  color: ${({ theme }) => theme.colors.dark};
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: 'Cabin', sans-serif;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: 1.6rem;
+  }
+`
+const PricingSale = styled.span`
+  color: ${({ theme }) => theme.colors.gray};
+  text-decoration: line-through;
+  margin-left: 1.5rem;
+  font-family: 'Cabin', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    font-size: 1.6rem;
+  }
+`
+
 const Image = styled.div`
   flex: 1 1 40%;
   padding: 2rem 0;
@@ -130,7 +150,7 @@ const Wrapper = styled.div`
 `
 
 const ProductCardComponent = ({ product }) => {
-  console.log(product)
+  const { title, subtitle, tabs = [], price } = product
   return (
     <ProductCard>
       <Details>
@@ -139,21 +159,25 @@ const ProductCardComponent = ({ product }) => {
             <MdKeyboardBackspace />
             All Products
           </BackButton>
-          <Title>{product.title}</Title>
-          <Subtitle>{product.subtitle}</Subtitle>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle}</Subtitle>
         </Wrapper>
         <StyledTabs>
           <TabList>
-            {product.tabs.map((tab) => (
+            {tabs.map((tab) => (
               <Tab>{tab.label}</Tab>
             ))}
           </TabList>
           <Wrapper>
-            {product.tabs.map((tab) => (
+            {tabs.map((tab) => (
               <TabPanel>{tab.content}</TabPanel>
             ))}
           </Wrapper>
         </StyledTabs>
+        <Wrapper>
+          <Pricing>${price.sale}</Pricing>
+          <PricingSale>${price.regular}</PricingSale>
+        </Wrapper>
       </Details>
       <Image></Image>
     </ProductCard>

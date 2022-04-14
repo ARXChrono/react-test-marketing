@@ -19,9 +19,6 @@ const AppWrapper = styled.main`
   height: 100vh;
   display: flex;
   align-items: center;
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    flex-direction: column;
-  }
 `
 
 const NotFoundPage = () => {
