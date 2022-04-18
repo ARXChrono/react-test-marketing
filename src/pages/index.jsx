@@ -9,12 +9,14 @@ import { Toaster } from 'react-hot-toast'
 const AppWrapper = styled.main`
   margin: 0 auto;
   max-width: 1400px;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
+  padding-top: 1rem;
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     flex-direction: column;
-    height: 100%;
+    padding-top: unset;
   }
 `
 
