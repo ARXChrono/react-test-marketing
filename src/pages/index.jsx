@@ -12,11 +12,11 @@ const AppWrapper = styled.main`
   height: 100%;
   min-height: 100vh;
   display: flex;
-  padding-top: 1rem;
+  padding: 1rem;
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     flex-direction: column;
-    padding-top: unset;
+    padding: unset;
   }
 `
 

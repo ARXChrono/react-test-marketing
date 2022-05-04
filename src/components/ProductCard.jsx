@@ -18,12 +18,12 @@ const Spinner = styled.span`
   border-radius: 50%;
   position: relative;
   will-change: transform;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-top: 0.25rem solid rgba(255, 255, 255, 1);
-  border-right: 0.25rem solid rgba(255, 255, 255, 1);
-  border-bottom: 0.25rem solid rgba(255, 255, 255, 1);
-  border-left: 0.25rem solid rgba(255, 255, 255, 0.5);
+  height: 1rem;
+  width: 1rem;
+  border-top: 0.225rem solid rgba(255, 255, 255, 1);
+  border-right: 0.225rem solid rgba(255, 255, 255, 1);
+  border-bottom: 0.225rem solid rgba(255, 255, 255, 1);
+  border-left: 0.225rem solid rgba(255, 255, 255, 0.5);
 `
 
 const StyledTabs = styled(Tabs)`
@@ -39,7 +39,7 @@ const StyledTabs = styled(Tabs)`
     }
     &__tab {
       text-transform: uppercase;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 500;
       padding: 0.75rem 1.25rem;
       cursor: pointer;
@@ -56,13 +56,12 @@ const StyledTabs = styled(Tabs)`
       }
     }
     &__tab-panel--selected {
-      max-width: 750px;
-      min-height: 200px;
+      min-height: 210px;
       padding: 2rem 0;
       font-size: 0.8rem;
       font-weight: 200;
       letter-spacing: 0.4px;
-      line-height: 1.7;
+      line-height: 1.9;
       color: ${({ theme }) => theme.colors.darkerGray};
       @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
         min-height: unset;
@@ -81,7 +80,7 @@ const StyledSelect = styled(Select)`
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.dark};
   font-size: 2.25rem;
-  font-weight: 500;
+  font-weight: 600;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     font-size: 1.9rem;
   }
@@ -148,7 +147,7 @@ const Details = styled.div`
 
 const Pricing = styled.span`
   color: ${({ theme }) => theme.colors.dark};
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
   font-family: 'Cabin', sans-serif;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
@@ -160,7 +159,7 @@ const PricingSale = styled.span`
   text-decoration: line-through;
   margin-left: 1.5rem;
   font-family: 'Cabin', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     font-size: 1.6rem;
@@ -179,7 +178,7 @@ const ImageMobile = styled.div`
 
 const Image = styled.div`
   flex: 1 1 45%;
-  padding: 2.5rem 0;
+  padding: 2rem 0;
   align-items: center;
   user-select: none;
   .gatsby-image-wrapper {
@@ -223,19 +222,21 @@ const BuyWrapper = styled.div`
 
 const AddToCart = styled.a`
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 1.5rem 6rem;
+  padding: 1.25rem 5rem;
   font-weight: 500;
   border-radius: 4px;
+  font-size: 0.8rem;
   text-transform: uppercase;
   background: ${({ theme }) => theme.colors.interact};
   cursor: pointer;
   transition: background 0.2s ease;
-  min-width: 300px;
+  min-width: 246px;
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
     width: 100%;
-    justify-content: center;
   }
   &:hover,
   &:active {
