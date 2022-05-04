@@ -279,13 +279,13 @@ const ProductCardComponent = ({ product }) => {
         </Container>
         <StyledTabs>
           <TabList>
-            {tabs.map((tab) => (
-              <Tab>{tab.label}</Tab>
+            {tabs.map(({ label }, index) => (
+              <Tab key={`tab__label_${index}`}>{label}</Tab>
             ))}
           </TabList>
           <Container>
-            {tabs.map((tab) => (
-              <TabPanel>{tab.content}</TabPanel>
+            {tabs.map(({ content }, index) => (
+              <TabPanel key={`tab__label_${index}`}>{content}</TabPanel>
             ))}
           </Container>
         </StyledTabs>
@@ -313,7 +313,6 @@ const ProductCardComponent = ({ product }) => {
               breakpoints={[750, 1080, 1366, 1920]}
               placeholder="blurred"
               layout="constrained"
-              cropFocus="attention"
             />
           ) : (
             <StaticImage
@@ -323,7 +322,6 @@ const ProductCardComponent = ({ product }) => {
               breakpoints={[750, 1080, 1366, 1920]}
               placeholder="blurred"
               layout="constrained"
-              cropFocus="attention"
             />
           )}
         </ImageMobile>
@@ -349,7 +347,6 @@ const ProductCardComponent = ({ product }) => {
             breakpoints={[750, 1080, 1366, 1920]}
             placeholder="blurred"
             layout="constrained"
-            cropFocus="attention"
           />
         ) : (
           <StaticImage
@@ -358,7 +355,6 @@ const ProductCardComponent = ({ product }) => {
             breakpoints={[750, 1080, 1366, 1920]}
             placeholder="blurred"
             layout="constrained"
-            cropFocus="attention"
           />
         )}
       </Image>
