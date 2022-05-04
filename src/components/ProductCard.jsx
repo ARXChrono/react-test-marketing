@@ -285,7 +285,7 @@ const ProductCardComponent = ({ product }) => {
           </TabList>
           <Container>
             {tabs.map(({ content }, index) => (
-              <TabPanel key={`tab__label_${index}`}>{content}</TabPanel>
+              <TabPanel key={`tab__content_${index}`}>{content}</TabPanel>
             ))}
           </Container>
         </StyledTabs>
